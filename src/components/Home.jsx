@@ -33,6 +33,10 @@ const Home = () => {
     getPosts()
   },[])
 
+  useEffect(() => {
+    const jayed = JSON.stringify(posts)
+    console.log(`posts on each update: ${jayed}`)
+  },[posts])
 
   const logOut = () => {
     logout()
@@ -58,19 +62,26 @@ const Home = () => {
         .then((resp) => {
             console.log('deleted:' + resp)
             deleter(id)
-            // let updatedComments = []
-            // posts.map((post) => {
-            //     post.comments.map((cmnt) => {
-            //         if (cmnt._id === id) {
-            //             updatedComments = post.comments.filter((cmnt) => cmnt._id !== id)
-            //         } 
-            //     }) 
-            // })
-            // const clone = posts
-            // clone.map((post) => {
-            //     if (clone.comments)
-            // })
-
+            let updatedComments = []
+            posts.map((post) => {
+                post.comments.map((cmnt) => {
+                    if (cmnt._id === id) {
+                        updatedComments = post.comments.filter((cmnt) => cmnt._id !== id)
+                        const copy = posts
+                        copy.map((pst) => {
+                          pst.comments.map((com) => {
+                            if (com._id === id) {
+                              pst.comments = updatedComments
+                              setPosts(copy)
+                            }
+                          })
+                          console.log('comment text:' + pst.comments[0].text)
+                        })
+                        //copy[post].comments = updatedComments
+                        //setPosts(copy)
+                    } 
+                }) 
+            })
         })
         .catch((err) => console.log(err))
   }
