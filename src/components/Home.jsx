@@ -21,31 +21,18 @@ const Home = () => {
     .then((resp) => resp.json())
     .then(function(response) {
       setPosts(response)
-      // const ified = JSON.stringify(response)
-      console.log(`posts: ${response}`)
-      // setComments(psts[0].comments)
+      const ified = JSON.stringify(response)
+      console.log(`comments: ${ified.comments}`)
     })
     .catch(function(err) {
       console.log(err)
     })
   }
-
+ 
   useEffect(() => {
     getPosts()
   },[])
 
-//   useEffect(() => {
-//     if (posts.length > 0) {
-//         const parsedshiey= JSON.stringify(posts)
-//         console.log(parsedshiey)
-//         posts.map((post) => {
-//             console.log(`post: ${post[0].comments}`)
-//             comments.map((cmnt) => {
-//                 console.log(`comment:${cmnt.sender}: ${cmnt.text} | ${cmnt.time}`)
-//             })
-//         })
-//     }
-//   })
 
   const logOut = () => {
     logout()
@@ -69,8 +56,21 @@ const Home = () => {
         })
         .then((resp) => resp.json())
         .then((resp) => {
-            console.log(resp)
+            console.log('deleted:' + resp)
             deleter(id)
+            // let updatedComments = []
+            // posts.map((post) => {
+            //     post.comments.map((cmnt) => {
+            //         if (cmnt._id === id) {
+            //             updatedComments = post.comments.filter((cmnt) => cmnt._id !== id)
+            //         } 
+            //     }) 
+            // })
+            // const clone = posts
+            // clone.map((post) => {
+            //     if (clone.comments)
+            // })
+
         })
         .catch((err) => console.log(err))
   }
@@ -113,7 +113,7 @@ const Home = () => {
           <>
             <li key={post._id} >
                 <div>{post.title}: {post.text}</div>
-                {comments.map((cmnt) => {
+                {post.comments.map((cmnt) => {
                     return(
                       <>
                         <div key={cmnt._id}>{cmnt.sender}:{cmnt.text}|{cmnt.time}<button onClick={() => {deleteComment(cmnt._id, post._id)}}>Delete</button></div>
