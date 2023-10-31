@@ -1,6 +1,6 @@
 import '../App.css'
 import { useEffect, useState, useContext } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { AuthContext } from '../App'
 
 const Home = () => {
@@ -116,6 +116,7 @@ const Home = () => {
   return (
     <>
      <button onClick={() => logOut()}>Logout</button>
+     <Link to='/topic'>Topics</Link>
      <button onClick={() => {addPost()}}>Add Post</button>
      <h1>Posts</h1>
      <ul>

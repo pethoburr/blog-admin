@@ -2,6 +2,8 @@ import './App.css'
 import Login from './components/Login'
 import Home from './components/Home'
 import Postform from './components/Postform'
+import Topic from './components/Topic'
+import TopicForm from './components/TopicForm'
 import { createContext, useState } from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
@@ -26,6 +28,18 @@ function App() {
     {
       path: '/',
       element: <Login />
+    },
+    {
+      path: '/topic',
+      element: <Topic />
+    },
+    {
+      path: '/form',
+      element: <TopicForm />
+    },
+    {
+      path: '/form/:id',
+      element: <TopicForm />
     },
     {
       path: '/post-form',
