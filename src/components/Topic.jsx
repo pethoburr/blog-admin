@@ -9,7 +9,7 @@ const Topic = () => {
     const { token, logout } = useContext(AuthContext)
 
     const getTopics = () => {
-        fetch('http://localhost:3000/topics', {
+        fetch('https://still-pond-6102.fly.dev/topics', {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -29,7 +29,7 @@ const Topic = () => {
     }
 
     const dltTopic = (id) => {
-        fetch(`http://localhost:3000/topics/${id}/delete`, {
+        fetch(`https://still-pond-6102.fly.dev/topics/${id}/delete`, {
             mode: 'cors',
             method: 'POST',
         })

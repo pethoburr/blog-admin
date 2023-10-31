@@ -75,7 +75,7 @@ const Postform = () => {
         console.log('id' + id)
         e.preventDefault()
         if (id) {
-            fetch(`http://localhost:3000/posts/${id}/update`, {
+            fetch(`https://still-pond-6102.fly.dev/posts/${id}/update`, {
                 mode: 'cors',
                 method: 'POST',
                 headers: {

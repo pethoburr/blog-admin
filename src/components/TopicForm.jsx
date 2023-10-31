@@ -13,7 +13,7 @@ const TopicForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         if (id) {
-            fetch(`http://localhost:3000/topics/${id}/update`, {
+            fetch(`https://still-pond-6102.fly.dev/topics/${id}/update`, {
                 mode: 'cors',
                 method: 'POST',
                 headers: {
@@ -29,7 +29,7 @@ const TopicForm = () => {
                 })
                 .catch((err) => console.log(err))
         } else {
-            fetch('http://localhost:3000/topics/create', {
+            fetch('https://still-pond-6102.fly.dev/topics/create', {
                 mode: 'cors',
                 method: 'POST',
                 headers: {
@@ -61,7 +61,7 @@ const TopicForm = () => {
     }
 
     const editing = () => {
-        fetch(`http://localhost:3000/topics/${id}`, {
+        fetch(`https://still-pond-6102.fly.dev/topics/${id}`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }

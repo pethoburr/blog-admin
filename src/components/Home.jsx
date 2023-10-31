@@ -11,7 +11,7 @@ const Home = () => {
 
   const getPosts = () => {
     console.log(`token: ${token}`)
-    fetch('http://localhost:3000/admin/posts', {
+    fetch('https://still-pond-6102.fly.dev/admin/posts', {
         mode: 'cors',
         headers: {
             'Authorization': `Bearer ${token}`,
@@ -49,7 +49,7 @@ const Home = () => {
   }
 
   const deleteComment = (id, user) => {
-    fetch(`http://localhost:3000/posts/${user}/comments/${id}/delete`, {
+    fetch(`https://still-pond-6102.fly.dev/posts/${user}/comments/${id}/delete`, {
         mode: 'cors',
         method: 'POST',
         headers: {
@@ -91,7 +91,7 @@ const Home = () => {
   }
 
   const deletePost = (id) => {
-    fetch(`http://localhost:3000/posts/${id}/delete`, {
+    fetch(`https://still-pond-6102.fly.dev/posts/${id}/delete`, {
         mode: 'cors',
         method: 'POST',
         headers: {

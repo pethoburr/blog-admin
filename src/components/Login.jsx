@@ -17,7 +17,7 @@ const Login = () => {
             password: password
         }
         console.log(`data: ${data.username}, ${data.password}`)
-        fetch('http://localhost:3000/admin/log-in', { 
+        fetch('https://still-pond-6102.fly.dev/admin/log-in', { 
             mode: 'cors',
             method: 'POST',
             headers: {
@@ -46,7 +46,7 @@ const Login = () => {
   return (
     <>
     <h1>Log In</h1>
-     <form method='POST' action='http://localhost:3000/admin/log-in'>
+     <form method='POST' action='https://still-pond-6102.fly.dev/admin/log-in'>
         <label htmlFor='username'>
             <input type='text' id='username' required name='username' onChange={(e) => {handleUserNameChange(e)}} placeholder='enter username' />
         </label>
