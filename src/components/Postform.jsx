@@ -14,7 +14,7 @@ const Postform = () => {
     const { token } = useContext(AuthContext)
 
     const getTopics = () => {
-        fetch('http://localhost:3000/topics', {
+        fetch('https://still-pond-6102.fly.dev/topics', {
             mode: 'cors',
             headers: {
                 'Authorization': `Bearer ${token}`
@@ -29,7 +29,7 @@ const Postform = () => {
     }
 
     const editing = () => {
-        fetch(`http://localhost:3000/posts/${id}`, {
+        fetch(`https://still-pond-6102.fly.dev/posts/${id}`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -91,7 +91,7 @@ const Postform = () => {
             })
             .catch((err) => console.log(err))
         } else {
-            fetch('http://localhost:3000/posts/create', {
+            fetch('https://still-pond-6102.fly.dev/posts/create', {
             mode: 'cors',
             method: 'POST',
             headers: {
