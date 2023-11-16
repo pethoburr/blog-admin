@@ -1,6 +1,6 @@
 import '../App.css'
 import { useState,useContext } from 'react'
-import { Link, useNavigate  } from 'react-router-dom'
+import { useNavigate  } from 'react-router-dom'
 import { AuthContext } from '../App'
 import Lion from '../assets/roaringlion.jpg'
 
@@ -104,7 +104,7 @@ const Login = () => {
                     { passError ? <div className='invalid-feedback' >Incorrect password</div> : ''}
                 </div>
                 { bothError ? <div className='bothErr'>Missing credentials</div> : ''}
-                <button type='submit' className='btn btn-primary' onClick={(e) => {auth(e)}}>Log in</button><div>Dont have an account?<Link to='/sign-up'>Sign up</Link></div>
+                <button type='submit' className='btn btn-primary' onClick={(e) => {auth(e)}}>Log in</button>
             </form>
         </div>
     </div>
