@@ -39,6 +39,7 @@ form {
 h1 {
   text-align: center;
   color: green;
+  margin-top: 7rem;
 }
 
 h2 {
@@ -163,5 +164,41 @@ input, textarea, select {
   align-items: center;
   width: 99vw;
   height: 100vh;
+}
+
+nav {
+  display: flex;
+  position: fixed;
+  align-items: center;
+  width: 99vw;
+  padding: 1rem;
+}
+
+header {
+  flex-grow: 1;
+}
+
+.links {
+  display: flex;
+  gap: 1rem;
+}
+
+.home, .topics {
+  align-self: center;
+}
+
+.home, .topics, .logOutBtn {
+  color: green;
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+
+.homeActive, .topicsActive, .logOutActive {
+  border-bottom: 2px solid green;
+}
+
+.home:hover, .topics:hover, .logOutBtn:hover {
+  border-bottom: 2px solid green;
 }
 

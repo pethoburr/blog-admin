@@ -2,6 +2,7 @@ import '../App.css'
 import { useState, useContext, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { AuthContext } from '../App'
+import Navbar from './Navbar'
 
 const TopicForm = () => {
     const navigate = useNavigate()
@@ -10,7 +11,7 @@ const TopicForm = () => {
     const [description, setDescription] = useState('')
     const [titleError, setTitleError] = useState(false)
     const [descriptionErr, setDescriptionErr] = useState(false)
-    const { token, logout } = useContext(AuthContext)
+    const { token } = useContext(AuthContext)
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -57,11 +58,6 @@ const TopicForm = () => {
         setDescription(e.target.value)
     }
 
-    const logOut = () => {
-        logout()
-        navigate('/')
-    }
-
     const editing = () => {
         fetch(`https://still-pond-6102.fly.dev/topics/${id}`, {
             headers: {
@@ -100,7 +96,7 @@ const TopicForm = () => {
 
     return(
         <>
-            <button onClick={() => logOut()}>Log out</button>
+            <Navbar />
             <div className='topicForm'>
                 <form className='tf' onSubmit={(e) => handleSubmit(e)}>
                     <h1>{ id ? 'Update Topic' : 'Add Topic'}</h1>

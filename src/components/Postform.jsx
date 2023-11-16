@@ -3,6 +3,7 @@ import '../App.css'
 import { useState, useContext, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { AuthContext } from '../App'
+import Navbar from './Navbar'
 
 const Postform = () => {
     const { id } = useParams()
@@ -106,6 +107,7 @@ const Postform = () => {
 
     return(
         <>
+        <Navbar />
         <div className="postformContainer">
         <form className='postForm' onSubmit={(e) => {handleSubmit(e)}}>
             <h1>{ title === '' ? 'Add Post' : 'Update Post'}</h1>

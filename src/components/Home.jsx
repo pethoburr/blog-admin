@@ -1,6 +1,6 @@
 import '../App.css'
 import { useEffect, useState, useContext } from 'react'
-import { useNavigate, Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { AuthContext } from '../App'
 import Navbar from './Navbar'
 
@@ -8,7 +8,7 @@ const Home = () => {
   const navigate = useNavigate()
   const [posts, setPosts] = useState([])
   const [comments, setComments] = useState([])
-  const { token, logout } = useContext(AuthContext)
+  const { token } = useContext(AuthContext)
 
   const getPosts = () => {
     if (!token) {
@@ -38,11 +38,6 @@ const Home = () => {
     const jayed = JSON.stringify(posts)
     console.log(`posts: ${jayed}`)
   },[posts])
-
-  const logOut = () => {
-    logout()
-    navigate('/')
-  }
 
   const deleter = (id) => {
     const updated = comments.filter((comment) => comment._id !== id)
@@ -115,10 +110,8 @@ const Home = () => {
   return (
     <>
      <Navbar />
-     <button onClick={() => logOut()}>Logout</button>
-     <Link to='/topic'>Topics</Link>
-     <button onClick={() => {addPost()}}>Add Post</button>
      <h1>Posts</h1>
+     <button onClick={() => {addPost()}}>Add Post</button>
      <ul className='ulc'>
       {posts.length > 0 && posts.map((post) => {
         return(
