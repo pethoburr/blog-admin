@@ -2,6 +2,7 @@ import '../App.css'
 import { useEffect, useState, useContext } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { AuthContext } from '../App'
+import Navbar from './Navbar'
 
 const Home = () => {
   const navigate = useNavigate()
@@ -10,8 +11,10 @@ const Home = () => {
   const { token, logout } = useContext(AuthContext)
 
   const getPosts = () => {
-    console.log(`token: ${token}`)
-    fetch('https://still-pond-6102.fly.dev/admin/posts', {
+    if (!token) {
+      navigate('/')
+    }
+    fetch('http://localhost:3000/admin/posts', {
         mode: 'cors',
         headers: {
             'Authorization': `Bearer ${token}`,
@@ -21,8 +24,6 @@ const Home = () => {
     .then((resp) => resp.json())
     .then(function(response) {
       setPosts(response)
-      const ified = JSON.stringify(response)
-      console.log(`comments: ${ified.comments}`)
     })
     .catch(function(err) {
       console.log(err)
@@ -35,7 +36,7 @@ const Home = () => {
 
   useEffect(() => {
     const jayed = JSON.stringify(posts)
-    console.log(`posts on each update: ${jayed}`)
+    console.log(`posts: ${jayed}`)
   },[posts])
 
   const logOut = () => {
@@ -77,8 +78,6 @@ const Home = () => {
                           })
                           console.log('comment text:' + pst.comments[0].text)
                         })
-                        //copy[post].comments = updatedComments
-                        //setPosts(copy)
                     } 
                 }) 
             })
@@ -115,24 +114,42 @@ const Home = () => {
 
   return (
     <>
+     <Navbar />
      <button onClick={() => logOut()}>Logout</button>
      <Link to='/topic'>Topics</Link>
      <button onClick={() => {addPost()}}>Add Post</button>
      <h1>Posts</h1>
-     <ul>
+     <ul className='ulc'>
       {posts.length > 0 && posts.map((post) => {
         return(
           <>
-            <li key={post._id} >
-                <div>{post.title}: {post.text}</div>
-                {post.comments.map((cmnt) => {
-                    return(
-                      <>
-                        <div key={cmnt._id}>{cmnt.sender}:{cmnt.text}|{cmnt.time}<button onClick={() => {deleteComment(cmnt._id, post._id)}}>Delete</button></div>
-                      </>  
-                    )  
-                })}
-                <button onClick={() => {editPost(post._id)}}>Edit Post</button><button onClick={() => {deletePost(post._id)}}>Delete Post</button>
+            <li key={post._id} className='container'>
+              <div className="post">
+                <h3>{post.title}</h3>
+                <p className='time'>{post.time}</p>
+                <div className='text'>{post.text}</div>
+                <div className="editNdlt">
+                  <button onClick={() => {editPost(post._id)}} className='editPost'>Edit Post</button>
+                  <button className='dltPost' onClick={() => {deletePost(post._id)}}>Delete Post</button>
+                </div>
+              </div>
+                <ul className="comments">
+                  <h4>Comments</h4>
+                  {post.comments.map((cmnt) => {
+                      return(
+                        <>
+                          <li key={cmnt._id} className='cmnt'>
+                            <div className='ctext'>
+                                <p className='user'>{cmnt.sender.username}</p>
+                                <p className='time'>{cmnt.time}</p>
+                              <p className='txt'>{cmnt.text}</p>
+                            </div>
+                              <button className='dltCmnt' onClick={() => {deleteComment(cmnt._id, post._id)}}>Delete</button>
+                          </li>
+                        </>  
+                      )  
+                  })}
+                </ul>
             </li>
           </> 
         )

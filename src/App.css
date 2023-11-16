@@ -1,42 +1,99 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+img {
+  width: 100%;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+form {
+  width: 50%;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.form {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.formContainer {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
 }
 
-.card {
-  padding: 2em;
+.btn-primary {
+  width: max-content;
+  color: green;
+  background-color: white;
+  border: 2px solid green;
 }
 
-.read-the-docs {
-  color: #888;
+.form-control:focus {
+  border-color: green;
+  box-shadow: -1px 2px 14px -3px rgba(13,107,0,1);
 }
+
+.btn-primary:hover {
+  color: white;
+  background-color: green;
+}
+
+h2 {
+  color: green;
+}
+
+a {
+  color: green !important;
+}
+
+.ulc {
+  display: flex;
+  flex-direction: column;
+  width: 99vw;
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  border: 2px solid #ddd;
+  width: 100%;
+  padding: 1.5rem;
+  height: 70vh;
+}
+
+.comments {
+  overflow: scroll;
+}
+
+.post {
+  width: 100%;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+.cmnt {
+  display: flex;
+  padding: 1rem;
+  border: 2px solid #ddd;
+  justify-content: space-between;
+}
+
+.user, .time {
+  margin: 0;
+}
+
+.user {
+  font-weight: 900;
+  font-size: 1rem;
+}
+
+.time {
+  color: rgb(108, 105, 105);
+  font-style: italic;
+  font-size: .75rem;
+}
+
+.dltCmnt {
+  align-self: center;
+  height: max-content;
+}
+

@@ -5,10 +5,14 @@ import { AuthContext } from '../App'
 
 const Topic = () => {
     const [arr, setArr] = useState([])
+    const [dltErr, setDltErr] = useState(null)
     const navigate = useNavigate()
     const { token, logout } = useContext(AuthContext)
 
     const getTopics = () => {
+        if (!token) {
+            navigate('/')
+          }
         fetch('https://still-pond-6102.fly.dev/topics', {
             headers: {
                 'Authorization': `Bearer ${token}`
@@ -29,15 +33,22 @@ const Topic = () => {
     }
 
     const dltTopic = (id) => {
+        console.log('here' + id)
         fetch(`https://still-pond-6102.fly.dev/topics/${id}/delete`, {
             mode: 'cors',
             method: 'POST',
         })
         .then((resp) => resp.json())
         .then((resp) => {
-            console.log(resp)
-            const updatedTopics = arr.filter((topic) => topic._id !== id)
-            setArr(updatedTopics)
+            const fuck = JSON.stringify(resp)
+            console.log('resp:' + fuck)
+            if (resp.message) {
+                console.log('resp' + resp.message)
+                setDltErr(resp.message)
+            } else {
+                const updatedTopics = arr.filter((topic) => topic._id !== id)
+                setArr(updatedTopics)
+            }
         })
         .catch((err) => console.log(err))
     }
@@ -63,6 +74,7 @@ const Topic = () => {
                     </>
                     )
                 })}
+                { dltErr && <p>{dltErr}</p>}
                 <Link to='/form'>Add topic</Link>
             </ul>
         </>

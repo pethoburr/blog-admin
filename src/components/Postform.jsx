@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import '../App.css'
 import { useState, useContext, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
@@ -12,6 +13,7 @@ const Postform = () => {
     const [topic, setTopic] = useState(undefined)
     const [published, setPublished] = useState(false)
     const { token } = useContext(AuthContext)
+    const date = new Date();
 
     const getTopics = () => {
         fetch('https://still-pond-6102.fly.dev/topics', {
@@ -22,7 +24,6 @@ const Postform = () => {
         })
             .then((resp) => resp.json())
             .then((resp) => {
-                console.log(resp)
                 setTopics(resp.topics)
             })
             .catch((err) => console.log(err))
@@ -36,7 +37,6 @@ const Postform = () => {
         })
             .then((resp) => resp.json())
             .then((resp) => {
-                console.log('rn post' + resp.post.topic._id)
                 setTitle(resp.post.title)
                 setText(resp.post.text)
                 setTopic(resp.post.topic._id)
@@ -49,7 +49,6 @@ const Postform = () => {
         if (typeof window !== 'undefined') {
             getTopics()
         }
-        console.log('id on mount' + id)
         if (id) {
             editing()
         }
@@ -71,8 +70,6 @@ const Postform = () => {
     }
 
     const handleSubmit = (e) => {
-        console.log('post form submitted')
-        console.log('id' + id)
         e.preventDefault()
         if (id) {
             fetch(`https://still-pond-6102.fly.dev/posts/${id}/update`, {
@@ -82,11 +79,10 @@ const Postform = () => {
                     'Authorization': `Bearer ${token}`,
                     'Content-type': 'application/json'
                 },
-                body: JSON.stringify({ title, text, topic, published })
+                body: JSON.stringify({ title, text, date, topic, published })
             })
             .then((resp) => resp.json())
             .then((resp) => {
-                console.log(resp)
                 navigate('/home')
             })
             .catch((err) => console.log(err))
@@ -98,11 +94,10 @@ const Postform = () => {
                 'Authorization': `Bearer ${token}`,
                 'Content-type': 'application/json'
             },
-            body: JSON.stringify({ title, text, topic, published })
+            body: JSON.stringify({ title, text, date, topic, published })
         })
         .then((resp) => resp.json())
         .then((resp) => {
-            console.log(`form submit response: ${resp}`)
             navigate('/home')
         })
         .catch((err) => console.log(err))
@@ -116,7 +111,7 @@ const Postform = () => {
                     <input type='text' name='title' id='title' required placeholder='enter title' value={title ? title : ''} onChange={(e) => {handleTitleChange(e)}} />
                 </label>
                 <label htmlFor='text'>text:
-                    <input type='text' name='text' id='text' required placeholder='enter text' value={text ? text : ''} onChange={(e) => {handleTextChange(e)}} />
+                    <textarea type='text' name='text' id='text' required placeholder='enter text' value={text ? text : ''} onChange={(e) => {handleTextChange(e)}} />
                 </label>
                 <label htmlFor='topic'>topic:
                     <select type='text' name='topic' id='topic' required value={topic} onChange={(e) => {handleTopicChange(e)}}>
