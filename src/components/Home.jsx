@@ -132,6 +132,7 @@ const Home = () => {
                   <button onClick={() => {editPost(post._id)}} className='editPost'>Edit Post</button>
                   <button className='dltPost' onClick={() => {deletePost(post._id)}}>Delete Post</button>
                 </div>
+                {post.published ? <div className='yes'>PUBLISHED</div> : <div className='no'>NOT PUBLISHED</div>}
               </div>
                 <ul className="comments">
                   <h4>Comments</h4>

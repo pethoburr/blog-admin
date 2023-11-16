@@ -60,23 +60,29 @@ const Topic = () => {
     return(
         <>
             <button onClick={() => logOut()}>Log Out</button>
-            <div>topics</div>
-            <ul>
-                {arr.length > 0 && arr.map((topic) => {
-                    return(
-                    <>
-                        <div>
-                            <p>{topic.title}</p>
-                            <p>{topic.description}</p>
-                            <button onClick={() => editTopic(topic._id)}>Edit</button>
-                            <button onClick={() => dltTopic(topic._id)}>Delete</button>
-                        </div>
-                    </>
-                    )
-                })}
-                { dltErr && <p>{dltErr}</p>}
-                <Link to='/form'>Add topic</Link>
-            </ul>
+            <div className="topiContainer">
+                <h1>topics</h1>
+                <Link to='/form' className='addTopic'>Add topic</Link>
+                <ul className='topicList'>
+                    {arr.length > 0 && arr.map((topic) => {
+                        return(
+                        <>
+                            <li className='topicItem'>
+                                <div className="tnd">
+                                    <p className='topicTitle'>{topic.title}</p>
+                                    <p className='topicDescription'>{topic.description}</p>
+                                </div>
+                                <div className="btns">
+                                    <button onClick={() => editTopic(topic._id)}>Edit</button>
+                                    <button onClick={() => dltTopic(topic._id)}>Delete</button>
+                                </div>
+                            </li>
+                        </>
+                        )
+                    })}
+                    { dltErr && <p>{dltErr}</p>} 
+                </ul>
+            </div>
         </>
     )
 }

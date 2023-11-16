@@ -8,6 +8,8 @@ const TopicForm = () => {
     const { id } = useParams()
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
+    const [titleError, setTitleError] = useState(false)
+    const [descriptionErr, setDescriptionErr] = useState(false)
     const { token, logout } = useContext(AuthContext)
 
     const handleSubmit = (e) => {
@@ -82,19 +84,37 @@ const TopicForm = () => {
         }
     },[])
 
+    useEffect(() => {
+        if (title === '') {
+            setTitleError(true)
+        } else {
+            setTitleError(false)
+        }
+
+        if (description === '') {
+            setDescriptionErr(true)
+        } else {
+            setDescriptionErr(false)
+        }
+    },[title, description])
+
     return(
         <>
             <button onClick={() => logOut()}>Log out</button>
-            <div>topic form</div>
-            <form onSubmit={(e) => handleSubmit(e)}>
-                <label htmlFor='title'>Title:
-                    <input type='text' id='title' name='title' value={title ? title : ''} onChange={(e) => handleTitleChange(e)} placeholder='enter topic name' />
-                </label>
-                <label htmlFor='description'>Description:
-                    <input type='text' id='description' name='description' value={description ? description : ''} onChange={(e) => handleDescriptionChange(e)} placeholder='enter topic description' />
-                </label>
-                <button type='submit'>Submit</button>
-            </form>
+            <div className='topicForm'>
+                <form className='tf' onSubmit={(e) => handleSubmit(e)}>
+                    <h1>{ id ? 'Update Topic' : 'Add Topic'}</h1>
+                    <div className="form-floating">
+                        <input type='text' id='title' className={ titleError ? 'form-control is-invalid' : 'form-control is-valid'} name='title' value={title ? title : ''} onChange={(e) => handleTitleChange(e)} placeholder='enter topic name' />
+                        <label htmlFor='title'>Title</label>
+                    </div>
+                    <div className="form-floating">
+                        <input type='text' id='description' className={ descriptionErr ? 'form-control is-invalid' : 'form-control is-valid'} name='description' value={description ? description : ''} onChange={(e) => handleDescriptionChange(e)} placeholder='enter topic description' />
+                        <label htmlFor='description'>Description</label>
+                    </div>  
+                    <button type='submit' className='submitBtn'>Submit</button>
+                </form>
+            </div>
         </>
     )
 }

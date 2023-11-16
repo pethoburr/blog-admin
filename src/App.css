@@ -36,6 +36,11 @@ form {
   background-color: green;
 }
 
+h1 {
+  text-align: center;
+  color: green;
+}
+
 h2 {
   color: green;
 }
@@ -95,5 +100,68 @@ a {
 .dltCmnt {
   align-self: center;
   height: max-content;
+}
+
+.postForm {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+
+.postformContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 99vw;
+  height: 100vh;
+}
+
+input, textarea, select {
+  margin-bottom: 1rem;
+}
+
+.submitBtn {
+  width: max-content;
+}
+
+.yes {
+  color: green;
+}
+
+.yes, .no {
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.no {
+  text-align: center;
+  color: red;
+}
+
+.editNdlt {
+  display: flex;
+  justify-content: center;
+}
+
+.topicItem {
+  display: flex;
+  border: 2px solid #ddd;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  justify-content: space-between;
+}
+
+.btns {
+  display: flex;
+  flex-direction: column;
+}
+
+.topicForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 99vw;
+  height: 100vh;
 }
 

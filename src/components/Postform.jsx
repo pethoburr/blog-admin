@@ -106,30 +106,34 @@ const Postform = () => {
 
     return(
         <>
-            <form onSubmit={(e) => {handleSubmit(e)}}>
-                <label htmlFor='title'>Title:
-                    <input type='text' name='title' id='title' required placeholder='enter title' value={title ? title : ''} onChange={(e) => {handleTitleChange(e)}} />
-                </label>
-                <label htmlFor='text'>text:
-                    <textarea type='text' name='text' id='text' required placeholder='enter text' value={text ? text : ''} onChange={(e) => {handleTextChange(e)}} />
-                </label>
-                <label htmlFor='topic'>topic:
-                    <select type='text' name='topic' id='topic' required value={topic} onChange={(e) => {handleTopicChange(e)}}>
-                       {topics.length > 0 && topics.map((ting) => {
+        <div className="postformContainer">
+        <form className='postForm' onSubmit={(e) => {handleSubmit(e)}}>
+            <h1>{ title === '' ? 'Add Post' : 'Update Post'}</h1>
+                <div className="form-floating">
+                <input type='text' name='title' id='title' className='form-control' required placeholder='enter title' value={title ? title : ''} onChange={(e) => {handleTitleChange(e)}} />
+                    <label htmlFor='title'>Title </label>
+                </div>
+                 <div className="form-floating">
+                 <textarea type='text' name='text' id='text' className='form-control' required placeholder='enter text' value={text ? text : ''} onChange={(e) => {handleTextChange(e)}} />
+                    <label htmlFor='text'>text</label>
+                </div>
+                <label htmlFor='topic'>topic 
+                    <select type='text' name='topic' className='form-select' id='topic' required value={topic} onChange={(e) => {handleTopicChange(e)}}>
+                        {topics.length > 0 && topics.map((ting) => {
                             return(
                                 <>
-                                    <option></option>
                                     <option value={ting._id}>{ting.title}</option>
                                 </>
                             )
-                       })}
+                        })}
                     </select>
                 </label>
-                <label htmlFor='published'>published:
-                    <input type='checkbox' name='published' id='published' value={published ? published : ''} onChange={(e) => {handlePublishedChange(e)}} />
+                <label htmlFor='published'>published
+                    <input type='checkbox' name='published' id='published' defaultChecked={published} onChange={(e) => {handlePublishedChange(e)}} />
                 </label>
-                <button type='submit'>Submit</button>
+                <button type='submit' className='submitBtn'>Submit</button>
             </form>
+        </div>  
         </>
     )
 }
