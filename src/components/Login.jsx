@@ -99,7 +99,7 @@ const Login = () => {
                     { userError ? <div className='invalid-feedback' >Incorrect username</div> : ''}
                 </div>
                 <div className="form-floating mb-3">
-                    <input type='text' id='password' className={passClass} required onChange={(e) => {handlePasswordChange(e)}} name='password' placeholder='enter password' />
+                    <input type='password' id='password' className={passClass} required onChange={(e) => {handlePasswordChange(e)}} name='password' placeholder='enter password' />
                     <label htmlFor='password'>Password</label>
                     { passError ? <div className='invalid-feedback' >Incorrect password</div> : ''}
                 </div>
