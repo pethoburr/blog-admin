@@ -21,7 +21,7 @@ const Login = () => {
             username: username,
             password: password
         }
-        fetch('http://localhost:3000/admin/log-in', { 
+        fetch('https://still-pond-6102.fly.dev/admin/log-in', { 
             mode: 'cors',
             method: 'POST',
             headers: {

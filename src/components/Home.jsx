@@ -14,7 +14,7 @@ const Home = () => {
     if (!token) {
       navigate('/')
     }
-    fetch('http://localhost:3000/admin/posts', {
+    fetch('https://still-pond-6102.fly.dev/admin/posts', {
         mode: 'cors',
         headers: {
             'Authorization': `Bearer ${token}`,
