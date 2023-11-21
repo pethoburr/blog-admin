@@ -26,7 +26,6 @@ const Login = () => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'credentials': 'include'
             },
 
             body: JSON.stringify(data),
@@ -70,8 +69,10 @@ const Login = () => {
                    }
 
                    if (response === "Not Found") {
-                    setUserError(true)
                     setUserClass('form-control is-invalid')
+                    setPassClass('form-control is-invalid')
+                    setBothError(true)
+
                    }
                 }
             })
@@ -91,7 +92,7 @@ const Login = () => {
     <div className="formContainer">
         <img src={Lion} alt="Lion roaring" />
         <div className="form">
-            <form method='POST' className={ userError || passError || bothError ? '' : 'was-validated'} action='http://localhost:3000/log-in'>
+            <form method='POST' className={ userError || passError || bothError ? '' : 'was-validated'} action='https://still-pond-6102.fly.dev/admin/log-in'>
                 <h2>Log In</h2>
                 <div className="form-floating mb-3">
                     <input type='text' id='username' name='username' className={userClass} required onChange={(e) => {handleUserNameChange(e)}} placeholder='enter username' />
@@ -103,7 +104,7 @@ const Login = () => {
                     <label htmlFor='password'>Password</label>
                     { passError ? <div className='invalid-feedback' >Incorrect password</div> : ''}
                 </div>
-                { bothError ? <div className='bothErr'>Missing credentials</div> : ''}
+                { bothError ? <div className='bothErr'>Incorrect username and/or password</div> : ''}
                 <button type='submit' className='btn btn-primary' onClick={(e) => {auth(e)}}>Log in</button>
             </form>
         </div>
