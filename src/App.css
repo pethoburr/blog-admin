@@ -204,5 +204,6 @@ header {
 
 .bothErr {
   color: red;
+  padding-bottom: .5rem;
 }
 
