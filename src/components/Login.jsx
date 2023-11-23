@@ -8,6 +8,7 @@ const Login = () => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState(null)
     const [userError, setUserError] = useState(false)
+    const [invalidUser, setInvalidUser] = useState(false)
     const [passError, setPassError] = useState(false)
     const [bothError, setBothError] = useState(false)
     const [userClass, setUserClass] = useState('form-control')
@@ -21,7 +22,7 @@ const Login = () => {
             username: username,
             password: password
         }
-        fetch('https://still-pond-6102.fly.dev/admin/log-in', { 
+        fetch('http://localhost:3000/admin/log-in', { 
             mode: 'cors',
             method: 'POST',
             headers: {
@@ -68,7 +69,17 @@ const Login = () => {
                         setUserClass('form-control')
                    }
 
+                   if (response === "Must be admin user") {
+                    setInvalidUser(true)
+                    setUserError(true)
+                    setPassError(false)
+                    setBothError(false)
+                    setUserClass('form-control is-invalid')
+                    setPassClass('form-control')
+                   }
+
                    if (response === "Not Found") {
+                    setInvalidUser(true)
                     setUserClass('form-control is-invalid')
                     setPassClass('form-control is-invalid')
                     setBothError(true)
@@ -97,7 +108,7 @@ const Login = () => {
                 <div className="form-floating mb-3">
                     <input type='text' id='username' name='username' className={userClass} required onChange={(e) => {handleUserNameChange(e)}} placeholder='enter username' />
                     <label htmlFor='username'>Username</label>
-                    { userError ? <div className='invalid-feedback' >Incorrect username</div> : ''}
+                    { userError ? <div className='invalid-feedback' >{ invalidUser ? 'Only admin user access allowed' : 'Incorrect username' }</div> : ''}
                 </div>
                 <div className="form-floating mb-3">
                     <input type='password' id='password' className={passClass} required onChange={(e) => {handlePasswordChange(e)}} name='password' placeholder='enter password' />
