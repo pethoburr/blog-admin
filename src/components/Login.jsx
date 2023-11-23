@@ -22,7 +22,7 @@ const Login = () => {
             username: username,
             password: password
         }
-        fetch('https://blog-client-admin.netlify.app/admin/log-in', { 
+        fetch('https://still-pond-6102.fly.dev/admin/log-in', { 
             mode: 'cors',
             method: 'POST',
             headers: {
