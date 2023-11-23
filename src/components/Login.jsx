@@ -52,6 +52,7 @@ const Login = () => {
                    if (response.message === 'Incorrect username') {
                         console.log('incorrect username')
                         setUserError(true)
+                        setInvalidUser(false)
                         setPassError(false)
                         setBothError(false)
                         console.log(`after: ${userError}`)
@@ -62,6 +63,7 @@ const Login = () => {
                    if (response.message === 'Incorrect password') {
                         console.log('incorrect password')
                         setPassError(true)
+                        setInvalidUser(false)
                         setUserError(false)
                         setBothError(false)
                         console.log(`after: ${passError}`)
@@ -80,6 +82,7 @@ const Login = () => {
 
                    if (response === "Not Found") {
                     setInvalidUser(true)
+                    setInvalidUser(false)
                     setUserClass('form-control is-invalid')
                     setPassClass('form-control is-invalid')
                     setBothError(true)
