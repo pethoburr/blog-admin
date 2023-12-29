@@ -1,3 +1,17 @@
+@font-face {
+  font-family: 'titleBold';
+  src: url('./assets/LibreBaskerville-Bold.ttf');
+}
+
+@font-face {
+  font-family: 'titleReg';
+  src: url('./assets/LibreBaskerville-Regular.ttf');
+}
+
+* {
+  font-family: 'titleReg';
+}
+
 img {
   width: 100%;
 }
@@ -8,9 +22,16 @@ form {
 
 .form {
   display: flex;
+  flex-direction: column;
   width: 100%;
+  height: 100%;
   justify-content: center;
   align-items: center;
+}
+
+.titles {
+  position: fixed;
+  top: 0;
 }
 
 .formContainer {
@@ -31,12 +52,18 @@ form {
   box-shadow: -1px 2px 14px -3px rgba(13,107,0,1);
 }
 
-.btn-primary:hover {
-  color: white;
-  background-color: green;
+.btn-primary:hover, .btn-primary:active, .btn-primary:target, .btn-primary:focus, .btn-primary:focus-visible {
+  color: white !important;
+  background-color: green !important;
+  border-color: green !important;
+}
+
+.btn-primary:active:focus-visible, .btn-primary:focus-visible {
+  box-shadow: rgba(5, 143, 97, 0.35) 0px 5px 15px !important;
 }
 
 h1 {
+  font-family: 'titleBold';
   text-align: center;
   color: green;
   margin-top: 7rem;

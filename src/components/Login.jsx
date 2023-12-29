@@ -106,7 +106,12 @@ const Login = () => {
     <div className="formContainer">
         <img src={Lion} alt="Lion roaring" />
         <div className="form">
+            <div className="titles">
+                <h1>Apex Predators Blog</h1>
+                <h6>Must be admin to enter</h6>
+            </div>
             <form method='POST' className={ userError || passError || bothError ? '' : 'was-validated'} action='https://still-pond-6102.fly.dev/admin/log-in'>
+                
                 <h2>Log In</h2>
                 <div className="form-floating mb-3">
                     <input type='text' id='username' name='username' className={userClass} required onChange={(e) => {handleUserNameChange(e)}} placeholder='enter username' />
