@@ -127,7 +127,7 @@ const Home = () => {
                 </div>
                 {post.published ? <div className='yes'>PUBLISHED</div> : <div className='no'>NOT PUBLISHED</div>}
               </div>
-                <ul className="comments">
+              { post.comments.length > 0 ? <ul className="comments">
                   <h4>Comments</h4>
                   {post.comments.map((cmnt) => {
                       return(
@@ -143,7 +143,8 @@ const Home = () => {
                         </>  
                       )  
                   })}
-                </ul>
+                </ul> : <p className='noComment'>No comments!</p>}
+                
             </li>
           </> 
         )

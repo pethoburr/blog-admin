@@ -20,6 +20,10 @@ form {
   width: 50%;
 }
 
+.noComment {
+  margin: 1rem;
+}
+
 .form {
   display: flex;
   flex-direction: column;
