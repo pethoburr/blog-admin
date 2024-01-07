@@ -108,7 +108,7 @@ const Login = () => {
         <div className="form">
             <div className="titles">
                 <h1>Apex Predators Blog</h1>
-                <h6>Must be admin to enter</h6>
+                <h6>Admin users site</h6>
             </div>
             <form method='POST' className={ userError || passError || bothError ? '' : 'was-validated'} action='https://still-pond-6102.fly.dev/admin/log-in'>
                 
