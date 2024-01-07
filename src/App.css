@@ -248,6 +248,16 @@ header {
   color: white !important;
 }
 
+.logOutBtn {
+  border: none !important;
+  margin: 0 !important;
+}
+
+nav {
+  border-bottom: 2px solid #ddd;
+  background-color: white;
+}
+
 .bothErr {
   color: red;
   padding-bottom: .5rem;
