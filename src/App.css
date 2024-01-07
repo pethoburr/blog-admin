@@ -265,6 +265,10 @@ nav {
   background-color: white;
 }
 
+h4 {
+  color: green;
+}
+
 .addTopic {
   display: flex;
   color: black !important;
