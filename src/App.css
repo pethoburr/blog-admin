@@ -258,6 +258,17 @@ nav {
   background-color: white;
 }
 
+.addTopic {
+  display: flex;
+  color: black !important;
+  justify-content: flex-end;
+  padding: 1rem;
+}
+
+.addTopic:hover {
+  color: green !important;
+}
+
 .bothErr {
   color: red;
   padding-bottom: .5rem;
