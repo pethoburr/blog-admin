@@ -22,6 +22,8 @@ form {
 
 .noComment {
   margin: 1rem;
+  width: 25rem;
+  text-align: center;
 }
 
 .form {
@@ -98,7 +100,8 @@ a {
 }
 
 .comments {
-  overflow: scroll;
+  overflow-y: scroll;
+  width: 25rem;
 }
 
 .post {
@@ -231,6 +234,18 @@ header {
 
 .home:hover, .topics:hover, .logOutBtn:hover {
   border-bottom: 2px solid green;
+}
+
+.dltPost, .dltCmnt, .editPost, button {
+  margin: .5rem !important;
+  border: 2px solid green !important;
+  background-color: white !important;
+  color: green !important;
+}
+
+.dltPost:hover, .dltCmnt:hover, .editPost:hover, button:hover {
+  background-color: green !important;
+  color: white !important;
 }
 
 .bothErr {
